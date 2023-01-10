@@ -46,7 +46,7 @@ export default function (req, res) {
         const { originalname, filename, path, mimetype } = req.file;
         var type = SetfileType(mimetype);
         const image = await sharp(path)
-            .resize(parseInt(w) ?? 200, parseInt(h) ?? 200)
+            .resize(parseInt(w ?? 200), parseInt(h ?? 200))
             .toFormat(f ?? type)
             // .jpeg({ quality: 90 })
             .toBuffer()
