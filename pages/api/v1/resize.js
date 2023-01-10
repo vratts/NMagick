@@ -5,7 +5,7 @@ import SetfileType from "../../../controller/SetfileType.js";
 
 // Configure o multer para lidar com o upload de arquivos
 const upload = multer({
-    dest: 'public/upload/', // Define o diretório para o qual os arquivos serão enviados
+    dest: '/tmp/upload/', // Define o diretório para o qual os arquivos serão enviados
     fileFilter: (req, file, callback) => {
         // Define o tipo de arquivos que serão aceitos
         if (!file.originalname.match(/\.(jpg|jpeg|png|webp)$/)) {
