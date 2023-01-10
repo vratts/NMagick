@@ -1,0 +1,34 @@
+{
+  "name": "nmagick",
+  "version": "1.0.0",
+  "description": "Next Image Magic API",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js",
+    "dev": "next dev"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vratts/NMagick.git"
+  },
+  "keywords": [
+    "nextjs",
+    "image-magick",
+    "nodejs"
+  ],
+  "author": "Ratts13",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vratts/NMagick/issues"
+  },
+  "homepage": "https://github.com/vratts/NMagick#readme",
+  "dependencies": {
+    "formidable": "^2.1.1",
+    "gm": "^1.25.0",
+    "multer": "^1.4.5-lts.1",
+    "next": "^13.1.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "sharp": "^0.31.3"
+  }
+}
