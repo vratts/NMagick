@@ -1,14 +1,23 @@
 import sharp from "sharp";
 import multer from "multer";
+import axios from "axios";
+import fs from "fs";
 
 function CreateWatermark(img = '', water = '', meta = {}) {
-    return new Promise((result, reject) => {
+    return new Promise(async (result, reject) => {
+        if(water.includes('http')){
+            var src = await axios(water, { responseType: 'arraybuffer' });
+            water = Buffer.from(src.data, 'binary');
+            await fs.promises.writeFile('/tmp/upload/tmpwater', water);
+            water = '/tmp/upload/tmpwater';
+        }
         sharp(img)
             .composite([{
                 input: water,
                 gravity: 'southeast'
             }])
             .toFormat(meta.type)
+            .resize(parseInt(meta.width ?? 200), parseInt(meta.height ?? 200))
             .toBuffer()
             .then((data) => {
                 result(data);
