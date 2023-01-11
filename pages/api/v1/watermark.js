@@ -1,6 +1,5 @@
 import df from "../../../controller/DefaultFunctions.js";
 import SetfileType from "../../../controller/SetfileType.js";
-import sharp from "sharp";
 
 export const config = {
     api: {
@@ -15,7 +14,7 @@ export default function (req, res) {
         return;
     }
 
-    var { w, h, q, f } = req.query;
+    var { w, h, q, f, i } = req.query;
     
     df.upload.array('file', 2)(req, res, async (err) => {
         if (err) {
@@ -28,7 +27,7 @@ export default function (req, res) {
             height: parseInt(h ?? 200),
             width: parseInt(w ?? 200)
         }
-        var img = await df.CreateWatermark(path, req.files[1].path, meta);
+        var img = await df.CreateWatermark(path, i ?? req.files[1].path, meta);
         res.status(200).setHeader('Content-Type', mimetype).send(img)
     })
 }

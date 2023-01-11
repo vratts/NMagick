@@ -37,7 +37,7 @@ export default function (req, res) {
     }
 
     var { w, h, q, f } = req.query;
-
+    console.log(req.headers);
     upload.single('file')(req, res, async (error) => {
         if (error) {
             return res.status(400).json({ error: error.message })
