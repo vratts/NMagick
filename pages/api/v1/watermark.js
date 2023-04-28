@@ -8,7 +8,7 @@ export const config = {
 }
 
 export default function (req, res) {
-    res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=59");
+    // res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=59");
     if (req.method !== 'POST') {
         res.status(405).json({ message: 'Only POST requests allowed' })
         return;
