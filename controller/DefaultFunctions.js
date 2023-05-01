@@ -3,13 +3,18 @@ import multer from "multer";
 import axios from "axios";
 import fs from "fs";
 
+function rand(min = 1, max = 9999) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
 function CreateWatermark(img = '', water = '', meta = {}) {
     return new Promise(async (result, reject) => {
-        if(water.includes('http')){
+        if (water.includes('http')) {
+            var rd = water.split('/').reverse()[0];
             var src = await axios(water, { responseType: 'arraybuffer' });
             water = Buffer.from(src.data, 'binary');
-            await fs.promises.writeFile('/tmp/upload/tmpwater', water);
-            water = '/tmp/upload/tmpwater';
+            await fs.promises.writeFile('/tmp/upload/tmpwater_' + rd, water);
+            water = '/tmp/upload/tmpwater_' + rd;
         }
         sharp(img)
             .composite([{
