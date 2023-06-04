@@ -1,4 +1,3 @@
-import puppeteer from 'puppeteer';
 import chrome from 'chrome-aws-lambda';
 import { join } from 'path';
 import { createReadStream } from 'fs';
