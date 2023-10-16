@@ -1,5 +1,4 @@
 // import * as htmlToImage from 'html-to-image';
-import { createCanvas } from 'canvas';
 import htmlToImage from 'node-html-to-image';
 import fs from 'fs';
 
